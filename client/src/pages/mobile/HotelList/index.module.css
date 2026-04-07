@@ -1,0 +1,255 @@
+.page {
+  padding-bottom: 30px;
+}
+
+.hero {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 12px 16px 16px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(244, 248, 247, 0.98) 0%, rgba(244, 248, 247, 0.94) 100%);
+  backdrop-filter: blur(14px);
+}
+
+.heroTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.heroTop h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.heroTop p {
+  margin: 8px 0 0;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.resultBadge {
+  min-width: 76px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(12, 61, 57, 0.08);
+  text-align: center;
+}
+
+.resultBadge strong,
+.resultBadge span {
+  display: block;
+}
+
+.resultBadge strong {
+  font-size: 22px;
+  color: var(--brand-primary);
+}
+
+.resultBadge span {
+  margin-top: 4px;
+  color: var(--text-sub);
+  font-size: 11px;
+}
+
+.searchWrap {
+  margin-top: 14px;
+  padding: 8px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(12, 61, 57, 0.08);
+}
+
+.filterPanel {
+  margin: 14px 16px 0;
+  padding: 16px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(10, 54, 51, 0.08);
+}
+
+.panelTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panelLabelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1;
+  border: none;
+  min-height: 38px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.panelLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.panelLabel svg {
+  flex-shrink: 0;
+  font-size: 14px;
+  position: relative;
+  top: -0.5px;
+}
+
+.panelLabel span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+}
+
+.expandIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f5faf9 0%, #eef5f4 100%);
+  box-shadow: inset 0 0 0 1px #e2ecea;
+  color: #50706d;
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+
+.expandChevron {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transform-origin: center;
+}
+
+.expandIconOpen {
+  transform: rotate(180deg);
+  background: linear-gradient(180deg, #e8f8f5 0%, #dcf3ef 100%);
+  color: var(--brand-primary);
+}
+
+.filterDrawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: grid-template-rows 0.26s ease, opacity 0.22s ease, transform 0.22s ease;
+}
+
+.filterDrawerOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.filterDrawerInner {
+  overflow: hidden;
+  padding-top: 12px;
+}
+
+.summaryRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.summaryRow span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f1f8f7;
+  color: #385957;
+  font-size: 12px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.selectBox {
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: #f8fbfb;
+  border: 1px solid #e6efee;
+}
+
+.selectBox label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-sub);
+  font-size: 12px;
+}
+
+.selectBox select {
+  width: 100%;
+  height: 32px;
+  border: none;
+  background: transparent;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.tag,
+.tagActive {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.tag {
+  background: #edf4f3;
+}
+
+.tagActive {
+  background: linear-gradient(135deg, #0f766e 0%, #149687 100%);
+  color: #fff;
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+  padding: 20px 16px 0;
+}
+
+.listHeader strong {
+  font-size: 18px;
+}
+
+.listHeader span {
+  color: var(--text-sub);
+  font-size: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}

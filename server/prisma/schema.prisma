@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  username      String         @unique
+  passwordHash  String
+  role          String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  hotels        Hotel[]
+  operationLogs OperationLog[]
+}
+
+model Hotel {
+  id            Int        @id @default(autoincrement())
+  merchantId    Int
+  nameZh        String
+  nameEn        String
+  city          String
+  address       String
+  star          Int
+  description   String
+  openYear      Int
+  coverImage    String
+  galleryImages String
+  tags          String
+  facilities    String
+  nearbyInfo    String
+  discountInfo  String
+  latitude      Float?
+  longitude     Float?
+  auditStatus   String     @default("pending")
+  auditReason   String?
+  publishStatus String     @default("draft")
+  isOffline     Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  merchant      User       @relation(fields: [merchantId], references: [id])
+  roomTypes     RoomType[]
+  banners       Banner[]
+  bookings      Booking[]
+}
+
+model RoomType {
+  id                Int       @id @default(autoincrement())
+  hotelId           Int
+  roomName          String
+  bedType           String
+  breakfastIncluded Boolean   @default(false)
+  cancelPolicy      String
+  price             Float
+  originalPrice     Float
+  stock             Int
+  roomArea          Int
+  maxGuests         Int
+  roomImage         String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  hotel             Hotel     @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  bookings          Booking[]
+}
+
+model Banner {
+  id            Int      @id @default(autoincrement())
+  title         String
+  image         String
+  targetHotelId Int
+  sortOrder     Int      @default(0)
+  isActive      Boolean  @default(true)
+  hotel         Hotel    @relation(fields: [targetHotelId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+  id           Int      @id @default(autoincrement())
+  hotelId      Int
+  roomTypeId   Int
+  checkInDate  DateTime
+  checkOutDate DateTime
+  nights       Int
+  guestCount   Int
+  totalPrice   Float
+  contactName  String
+  contactPhone String
+  createdAt    DateTime @default(now())
+  hotel        Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  roomType     RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+}
+
+model OperationLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  action    String
+  detail    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
